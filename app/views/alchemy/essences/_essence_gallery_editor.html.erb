@@ -1,0 +1,11 @@
+<% cache(content) do %>
+<div class="content_editor essence_gallery_editor" data-content-id="<%= content.id %>">
+  <%= content_label(content) %>
+  <%= text_field_tag(
+    content.form_field_name,
+    content.ingredient,
+    class: ["thin_border #{content.settings[:linkable] ? ' text_with_icon' : ''}", html_options[:class]].join(' '),
+    style: html_options[:style]
+  ) %>
+</div>
+<% end %>

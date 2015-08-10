@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729151825) do
+ActiveRecord::Schema.define(version: 20150810092432) do
 
   create_table "alchemy_attachments", force: :cascade do |t|
     t.string   "name"
@@ -100,6 +100,14 @@ ActiveRecord::Schema.define(version: 20150729151825) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "link_text"
+  end
+
+  create_table "alchemy_essence_galleries", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "alchemy_essence_htmls", force: :cascade do |t|

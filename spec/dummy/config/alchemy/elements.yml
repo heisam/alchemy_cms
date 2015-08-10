@@ -107,3 +107,11 @@
 - name: slider
   nestable_elements:
     - slide
+
+- name: picture_gallery
+  picture_gallery: true
+
+- name: gallery
+  contents:
+    - name: gallery
+      type: EssenceGallery
