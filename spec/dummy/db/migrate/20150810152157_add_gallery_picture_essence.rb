@@ -1,0 +1,1 @@
+../../../../db/migrate/20150810152157_add_gallery_picture_essence.rb

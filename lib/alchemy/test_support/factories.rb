@@ -136,6 +136,10 @@ FactoryGirl.define do
     file_name 'image.png'
   end
 
+  factory :essence_gallery, :class => 'Alchemy::EssenceGallery' do
+    name 'text'
+  end
+
   factory :event do
     name 'My Event'
     hidden_name 'not shown'
