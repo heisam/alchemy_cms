@@ -110,20 +110,6 @@ ActiveRecord::Schema.define(version: 20150810152157) do
     t.integer  "updater_id"
   end
 
-  create_table "alchemy_essence_gallery_pictures", force: :cascade do |t|
-    t.integer  "picture_id"
-    t.string   "caption"
-    t.string   "title"
-    t.string   "alt_tag"
-    t.string   "crop_from"
-    t.string   "crop_size"
-    t.string   "render_size"
-    t.integer  "creator_id"
-    t.integer  "updater_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "alchemy_essence_htmls", force: :cascade do |t|
     t.text     "source"
     t.integer  "creator_id"
@@ -200,6 +186,24 @@ ActiveRecord::Schema.define(version: 20150810152157) do
     t.integer "user_id"
     t.boolean "folded",  default: false
   end
+
+  create_table "alchemy_gallery_pictures", force: :cascade do |t|
+    t.integer  "picture_id"
+    t.string   "caption"
+    t.string   "title"
+    t.string   "alt_tag"
+    t.string   "crop_from"
+    t.string   "crop_size"
+    t.string   "render_size"
+    t.integer  "position",           null: false
+    t.integer  "essence_gallery_id", null: false
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "alchemy_gallery_pictures", ["essence_gallery_id"], name: "index_alchemy_gallery_pictures_on_essence_gallery_id"
 
   create_table "alchemy_languages", force: :cascade do |t|
     t.string   "name"

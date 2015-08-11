@@ -1,13 +1,22 @@
+# TODO move shared logic with EssencePicture into module
+
 module Alchemy
-  class EssenceGalleryPicture < ActiveRecord::Base
-    acts_as_essence ingredient_column: 'picture'
+  class GalleryPicture < ActiveRecord::Base
+    acts_as_list scope: :essence_gallery
 
     belongs_to :picture
+    belongs_to :essence_gallery
     delegate :image_file_width, :image_file_height, :image_file, to: :picture
     before_save :fix_crop_values
     before_save :replace_newlines
 
     include Alchemy::Picture::Transformations
+
+    before_create :add_gallery_id
+
+    def add_gallery_id
+      self.essence_gallery_id = 5
+    end
 
     # The url to show the picture.
     #

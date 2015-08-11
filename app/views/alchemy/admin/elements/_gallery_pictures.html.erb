@@ -1,0 +1,20 @@
+<% draggable = gallery.pictures.size > 1 -%>
+<div class="content_editor essence_gallery_editor">
+  <label><%= _t('picture_gallery_editor.images', default: _t(:images)) %></label>
+  <div class="picture_gallery_images" id="element_<%= gallery.id %>_contents">
+    <%- gallery.pictures.each do |picture| -%>
+      Here comes the Image!
+    <%- end -%>
+    <%= render 'alchemy/admin/elements/add_gallery_picture',
+          gallery: gallery,
+          options: options,
+          dragable: draggable
+    %>
+  </div>
+</div>
+
+<%- if draggable -%>
+<script type="text/javascript" charset="utf-8">
+  Alchemy.SortableContents('#element_<%= gallery.id %>_contents', '<%= form_authenticity_token %>');
+</script>
+<%- end -%>

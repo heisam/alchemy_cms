@@ -1,0 +1,21 @@
+<% cache(content) do %>
+  <%= content_tag :div, id: content.id, data: {"content-id" => content.id}, class: [
+      "essence_picture_editor",
+      options[:dragable] ? "dragable_picture" : nil,
+      options[:grouped] ? nil : "content_editor"
+    ].compact.join(" ") do %>
+    <div class="picture_thumbnail">
+      <span class="picture_tool delete">
+        <%= link_to_confirm_dialog "", _t(:confirm_to_delete_image),
+          alchemy.admin_essence_picture_path(
+            id: content,
+            options: options
+          ), {title: _t(:delete_image)} %>
+      </span>
+      <% if dragable %>
+        <div class="picture_handle" title="<%= _t(:drag_to_sort) %>"></div>
+      <% end %>
+      Bild
+    </div>
+  <% end %>
+<% end %>
