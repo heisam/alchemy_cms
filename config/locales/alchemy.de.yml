@@ -50,6 +50,7 @@ de:
     #      show_caption: Zeige Bildunterschrift
     #
     content_names:
+      gallery: Titel
 
     # === Translations for content validations
     # Used when a user did not enter (correct) values to the content field.

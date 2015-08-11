@@ -1,36 +1,22 @@
-# == Schema Information
-#
-# Table name: alchemy_essence_pictures
-#
-#  id              :integer          not null, primary key
-#  picture_id      :integer
-#  caption         :string(255)
-#  title           :string(255)
-#  alt_tag         :string(255)
-#  link            :string(255)
-#  link_class_name :string(255)
-#  link_title      :string(255)
-#  css_class       :string(255)
-#  link_target     :string(255)
-#  creator_id      :integer
-#  updater_id      :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  crop_from       :string(255)
-#  crop_size       :string(255)
-#  render_size     :string(255)
-#
+# TODO move shared logic with EssencePicture into module
 
 module Alchemy
-  class EssencePicture < ActiveRecord::Base
-    acts_as_essence ingredient_column: 'picture'
+  class GalleryPicture < ActiveRecord::Base
+    acts_as_list scope: :essence_gallery
 
     belongs_to :picture
+    belongs_to :essence_gallery
     delegate :image_file_width, :image_file_height, :image_file, to: :picture
     before_save :fix_crop_values
     before_save :replace_newlines
 
     include Alchemy::Picture::Transformations
+
+    before_create :add_gallery_id
+
+    def add_gallery_id
+      self.essence_gallery_id = 5
+    end
 
     # The url to show the picture.
     #

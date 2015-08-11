@@ -136,6 +136,17 @@ FactoryGirl.define do
     file_name 'image.png'
   end
 
+  factory :essence_gallery, class: 'Alchemy::EssenceGallery' do
+    name 'text'
+    after(:create) do |gallery|
+      create_list(:gallery_picture, 2, essence_gallery: gallery)
+    end
+  end
+
+  factory :gallery_picture, class: 'Alchemy::GalleryPicture' do
+    picture
+  end
+
   factory :event do
     name 'My Event'
     hidden_name 'not shown'

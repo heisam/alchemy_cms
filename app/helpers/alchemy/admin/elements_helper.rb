@@ -39,6 +39,17 @@ module Alchemy
       end
       alias_method :render_picture_editor, :render_picture_gallery_editor
 
+
+      def render_gallery_pictures(gallery, options={})
+        default_options = {
+          maximum_amount_of_images: nil,
+          grouped: true
+        }
+        options = default_options.merge(options)
+        render 'alchemy/admin/elements/gallery_pictures',
+          gallery: gallery, options: options
+      end
+
       # Returns an elements array for select helper.
       #
       # @param [Array] elements definitions

@@ -2,7 +2,7 @@
   unique: true
 
 - name: standard
-  elements: [article, header, slider]
+  elements: [article, header, slider, picture_gallery, gallery]
   autogenerate: [header, article]
 
 - name: everything

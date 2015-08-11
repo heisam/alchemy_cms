@@ -1,0 +1,13 @@
+<% cache(content) do %>
+<div class="content_editor essence_gallery_editor" data-content-id="<%= content.id %>">
+  <%= content_label(content) %>
+  <%= text_field_tag(
+    content.form_field_name,
+    content.ingredient,
+    class: ['thin_border', html_options[:class]].join(' '),
+    style: html_options[:style]
+  ) %>
+</div>
+<% end %>
+
+<%= render_gallery_pictures(content.essence, max_images: nil, crop: true) %>
